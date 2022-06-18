@@ -16,7 +16,12 @@ use \App\Http\Controllers\UserController;
 */
 
 Route::get('/user/teste', function (Request $request) {
-    return 'Teste Jailton';
+
+    $data = [
+        'token' => '555sisdfsjfgsdfsdkfsdhh'
+    ];
+    
+    return response()->json($data, 200);;
 });
 
 Route::post('user/login', [UserController::class, 'login']);
