@@ -15,8 +15,8 @@ use \App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/user/teste', function (Request $request) {
+    return 'Teste Jailton';
 });
 
 Route::post('user/login', [UserController::class, 'login']);
