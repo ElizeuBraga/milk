@@ -41,7 +41,7 @@ class UserController extends Controller
 
         return response()->json($data, 200);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -70,6 +70,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, $this->rules(), $this->messages());
+
         User::create([
             'name' => $request->name,
             'phone' => $request->phone,
@@ -121,5 +123,21 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function rules(){
+        return [
+            'email' => 'required',
+            'phone' => 'required',
+            'name' => 'required'
+        ];
+    }
+
+    public function messages(){
+        return  [
+            'email.required' => 'Digite um email válido',
+            'phone.required' => 'Digite o telefone',
+            'name.required' => 'Informe o nome do usuario'
+        ];
     }
 }
